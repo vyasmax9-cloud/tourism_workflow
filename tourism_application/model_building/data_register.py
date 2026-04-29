@@ -2,6 +2,7 @@ from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 from huggingface_hub import HfApi, create_repo
 import os
 
+DATA_PATH = "tourism_application/data"
 
 repo_id = "vyasmax9/tourism-predict-app"
 repo_type = "dataset"
@@ -19,7 +20,7 @@ except RepositoryNotFoundError:
     print(f"Space '{repo_id}' created.")
 
 api.upload_folder(
-    folder_path="tourism_application/data",
+    folder_path="DATA_PATH",
     repo_id=repo_id,
     repo_type=repo_type,
 )
