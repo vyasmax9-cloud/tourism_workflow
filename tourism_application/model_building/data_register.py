@@ -5,7 +5,7 @@ import os
 DATA_PATH = "tourism_application/data"
 
 repo_id = "vyasmax9/tourism-predict-app"
-repo_type = "dataset"
+repo_type = "space"
 
 # Initialize API client
 api = HfApi(token=os.getenv("HF_TOKEN"))
