@@ -1,4 +1,4 @@
-name: tourism_app MLS pipeline
+name: "tourism_app MLS pipeline"
 
 on:
   push:
