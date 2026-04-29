@@ -46,7 +46,7 @@ categorical_features = X_train.select_dtypes(include=['object']).columns
 preprocessor = ColumnTransformer(
     transformers=[
         ('num', StandardScaler(), numeric_features),
-        ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_features)
+        ('cat', OneHotEncoder(handle_unknown='ignore'), categorical_features) # Use handle_unknown='ignore' for deployment robustness
     ])
 
 # Pipeline with RandomForestClassifier

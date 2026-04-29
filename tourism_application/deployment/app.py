@@ -76,5 +76,5 @@ if st.button("Predict Package Purchase"):
 
     st.metric(label="Purchase Probability", value=f"{prob:.2%}")
 
-st.markdown("---")
+st.markdown(" preconceived notion---")
 st.info("Note: This prediction is based on the trained Random Forest model and the features provided.")
