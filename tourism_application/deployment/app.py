@@ -10,8 +10,7 @@ model = joblib.load(model_path)
 # Streamlit UI for Tourism Package Prediction
 st.title("Tourism Prediction App")
 st.write("""
-Predict whether a customer will purchase the Wellness Tourism Package""".
-""")
+Predict whether a customer will purchase the Wellness Tourism Package""")
 
 age = st.number_input("Age", 18, 70, 30)
 income = st.number_input("Monthly Income", 1000, 200000, 50000)
