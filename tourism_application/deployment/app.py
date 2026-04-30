@@ -60,4 +60,4 @@ if st.button("Predict"):
       st.subheader("Prediction")
       st.write(f"Prediction: {prediction}")
       st.subheader("Prediction Probability")
-      st.write(f"Probability of Purchase: {prediction_proba[0][
+      st.write(f"Probability of Purchase: {prediction_proba[0][1]}")
