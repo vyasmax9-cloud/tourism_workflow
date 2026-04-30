@@ -18,7 +18,7 @@ print("Dataset loaded successfully.")
 
 # Drop the unique identifier or index column
 
-tourapp_dataset = pd.read_csv(DATA_PATH)
+tourapp_dataset = pd.read_csv(DATASET_PATH)
 
 print("Dataset loaded successfully.")
 
