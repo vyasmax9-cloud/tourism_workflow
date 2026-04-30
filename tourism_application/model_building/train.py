@@ -34,12 +34,9 @@ ytest = pd.read_csv(ytest_path)
 
 
 # One-hot encode 'Type' and scale numeric features
-numeric_features = ['Age', 'NumberOfPersonVisiting', 'NumberOfFollowups', 'DurationOfPitch',
-                    'PitchSatisfactionScore', 'MonthlyIncome', 'NumberOfTrips', 'NumberOfChildrenVisiting'
-]
-categorical_features = ['CustomerID', 'TypeofContact', 'Occupation', 'Gender', 'CityTier',
-                        'MaritalStatus', 'PreferredPropertyStar', 'Designation', 'ProductPitched']
-
+numeric_features = X_train.select_dtypes(include=['int64',
+'float64']).columns.tolist()
+categorical_features = X_train.select_dtypes(include=['object']).columns.tolist()
 
 
 # Set the clas weight to handle class imbalance
