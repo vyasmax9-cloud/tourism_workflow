@@ -12,15 +12,16 @@ from huggingface_hub import login, HfApi
 
 # Define constants for the dataset and output paths
 api = HfApi(token=os.getenv("HF_TOKEN"))
-DATASET_PATH = "hf://datasets/vyasmax9/tourism-predict-app/tourism.csv"
+
+repo_id = "vyasmax9/tourism-predict-app".strip()
+print(f"Using Repo ID:'{repo_id}'")
+DATASET_PATH = os.path.join(os.getcwd(),"tourism_application", "data","tourism.csv")
+
+df = pd.read_csv(DATASET_PATH)
+print("Dataset loaded successfully.")
+print("Columns:", df.columns.tolist())
 
 # Drop the unique identifier or index column
-
-tourapp_dataset = pd.read_csv(DATASET_PATH)
-
-print("Dataset loaded successfully.")
-
-df = tourapp_dataset.copy()
 
 df.drop(columns=['Unnamed: 0', 'CustomerID'], inplace=True) # Drop 'Unnamed: 0' and 'CustomerID' as they are unique identifiers
 
@@ -51,6 +52,6 @@ for file_path in files:
     api.upload_file(
         path_or_fileobj=file_path,
         path_in_repo=file_path.split("/")[-1],  # just the filename
-        repo_id=" vyasmax9/tourism-predict-app",
+        repo_id=repo_id,
         repo_type="dataset",
     )
