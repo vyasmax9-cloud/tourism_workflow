@@ -10,7 +10,7 @@ repo_type = "space"
 # Initialize API client
 api = HfApi(token=os.getenv("HF_TOKEN"))
 
-print("Current Dir:",os.getced())
+print("Current Dir:",os.getcwd())
 print("DATA_PATH:",DATA_PATH)
 print("Exista:", os.path.exists(DATA_PATH))
 
