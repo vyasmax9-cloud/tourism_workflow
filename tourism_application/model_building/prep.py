@@ -17,7 +17,13 @@ df = pd.read_csv(DATASET_PATH)
 print("Dataset loaded successfully.")
 
 # Drop the unique identifier or index column
+
+tourapp_dataset = pd.read_csv(DATA_PATH)
+
+print("Dataset loaded successfully.")
+
 df = tourapp_dataset.copy()
+
 df.drop(columns=['Unnamed: 0', 'CustomerID'], inplace=True) # Drop 'Unnamed: 0' and 'CustomerID' as they are unique identifiers
 
 # Encoding the categorical 'Type' column
