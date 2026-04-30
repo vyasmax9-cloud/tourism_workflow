@@ -2,7 +2,7 @@ from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 from huggingface_hub import HfApi, create_repo
 import os
 
-DATA_PATH = os.path.join(os.getcwd(),"tourism_application/data","data")
+DATA_PATH = os.path.join(os.getcwd(),"tourism_application", "data")
 
 repo_id = "vyasmax9/tourism-predict-app"
 repo_type = "space"
