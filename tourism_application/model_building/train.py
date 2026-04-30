@@ -33,7 +33,7 @@ print("Data loaded successfully")
 
 # Define base XGBoost model
 xgb_model = xgb.XGBClassifier(random_state=42,
-                             use_label_encode=false,
+                             use_label_encode=False,
                              eval_metric="logloss")
 
 # Define hyperparameter grid
