@@ -30,6 +30,10 @@ ytest = pd.read_csv(ytest_path).values.ravel()
 
 print("Data loaded successfully")
 
+for col in Xtrain.select_dtypes(include=['object']).columns:
+    Xtrain[col] = Xtrain[col].astype('category').cat.codes
+    Xtest[col] = Xtest[col].astype('category').cat.codes
+
 
 # Define base XGBoost model
 xgb_model = xgb.XGBClassifier(random_state=42,
