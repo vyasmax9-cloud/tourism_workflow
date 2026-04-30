@@ -13,8 +13,6 @@ from huggingface_hub import login, HfApi
 # Define constants for the dataset and output paths
 api = HfApi(token=os.getenv("HF_TOKEN"))
 DATASET_PATH = "hf://datasets/vyasmax9/tourism-predict-app/tourism.csv"
-df = pd.read_csv(DATASET_PATH)
-print("Dataset loaded successfully.")
 
 # Drop the unique identifier or index column
 
@@ -28,7 +26,7 @@ df.drop(columns=['Unnamed: 0', 'CustomerID'], inplace=True) # Drop 'Unnamed: 0' 
 
 # Encoding the categorical 'Type' column
 label_encoder = LabelEncoder()
-df['Type'] = label_encoder.fit_transform(df['Type'])
+df['CustomerID'] = label_encoder.fit_transform(df['CustomerID'])
 
 target_col = 'Failure'
 
@@ -54,5 +52,5 @@ for file_path in files:
         path_or_fileobj=file_path,
         path_in_repo=file_path.split("/")[-1],  # just the filename
         repo_id=" vyasmax9/tourism-predict-app",
-        repo_type="space",
+        repo_type="dataset",
     )
