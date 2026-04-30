@@ -1,9 +1,5 @@
 # for data manipulation
 import pandas as pd
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.compose import make_column_transformer
-from sklearn.pipeline import make_pipeline
-# for model training, tuning, and evaluation
 import xgboost as xgb
 from sklearn.model_selection import GridSearchCV
 from sklearn.metrics import accuracy_score, classification_report, recall_score
@@ -16,7 +12,7 @@ from huggingface_hub import login, HfApi, create_repo
 from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 import mlflow
 
-mlflow.set_tracking_uri("http://localhost:5000")
+mlflow.set_tracking_uri("file:./mlruns")
 mlflow.set_experiment("mlops-training-experiment")
 
 api = HfApi()
@@ -29,28 +25,16 @@ ytest_path = "hf://datasets/vyasmax9/tourism-predict-app/ytest.csv"
 
 Xtrain = pd.read_csv(Xtrain_path)
 Xtest = pd.read_csv(Xtest_path)
-ytrain = pd.read_csv(ytrain_path)
-ytest = pd.read_csv(ytest_path)
+ytrain = pd.read_csv(ytrain_path).values.ravel()
+ytest = pd.read_csv(ytest_path).values.ravel()
 
+print("Data loaded successfully")
 
-# One-hot encode 'Type' and scale numeric features
-numeric_features = X_train.select_dtypes(include=['int64',
-'float64']).columns.tolist()
-categorical_features = X_train.select_dtypes(include=['object']).columns.tolist()
-
-
-# Set the clas weight to handle class imbalance
-class_weight = ytrain.value_counts()[0] / ytrain.value_counts()[1]
-class_weight
-
-# Define the preprocessing steps
-preprocessor = make_column_transformer(
-    (StandardScaler(), numeric_features),
-    (OneHotEncoder(handle_unknown='ignore'), categorical_features)
-)
 
 # Define base XGBoost model
-xgb_model = xgb.XGBClassifier(scale_pos_weight=class_weight, random_state=42)
+xgb_model = xgb.XGBClassifier(random_state=42,
+                             use_label_encode=false,
+                             eval_metric="logloss")
 
 # Define hyperparameter grid
 param_grid = {
