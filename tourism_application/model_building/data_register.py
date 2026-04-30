@@ -2,13 +2,20 @@ from huggingface_hub.utils import RepositoryNotFoundError, HfHubHTTPError
 from huggingface_hub import HfApi, create_repo
 import os
 
-DATA_PATH = "tourism_application/data"
+DATA_PATH = os.path.join(os.getcwd(),"tourism_application/data","data")
 
 repo_id = "vyasmax9/tourism-predict-app"
 repo_type = "space"
 
 # Initialize API client
 api = HfApi(token=os.getenv("HF_TOKEN"))
+
+print("Current Dir:",os.getced())
+print("DATA_PATH:",DATA_PATH)
+print("Exista:", os.path.exists(DATA_PATH))
+
+if not os.path.exists(DATA_PATH):
+    raise Exception(f"path not found: {DATA_PATH}")
 
 # Step 1: Check if the space exists
 try:
