@@ -26,9 +26,9 @@ df.drop(columns=['Unnamed: 0', 'CustomerID'], inplace=True) # Drop 'Unnamed: 0' 
 
 # Encoding the categorical 'Type' column
 label_encoder = LabelEncoder()
-df['CustomerID'] = label_encoder.fit_transform(df['CustomerID'])
+df['TypeofContact'] = label_encoder.fit_transform(df['TypeofContact'])
 
-target_col = 'Failure'
+target_col = 'ProdTaken'
 
 # Split into X (features) and y (target)
 X = df.drop(columns=[target_col])
